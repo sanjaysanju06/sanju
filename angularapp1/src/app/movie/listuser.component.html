@@ -1,0 +1,20 @@
+<div class="table-responsive">
+  <table class="table table-bordered" *ngIf="user && user.length">
+    <thead>
+      <tr class="bg-primary">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of user">
+        <td>{{ users.name }}</td>
+        <td>{{ users.email }}</td>
+        <td class="hidetext">{{ users.password }}</td>
+        <td> <button class="btn btn-primary" (click)="editButtonClick(users.id)">Edit</button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
