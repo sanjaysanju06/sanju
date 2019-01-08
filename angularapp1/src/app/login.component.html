@@ -38,6 +38,7 @@
       </div>
       <div class="panel-footer">
         <button class="btn btn-primary" type="submit" [disabled]="!reactiveForm.valid">Login </button>
+        <button class="btn btn-primary" (click)="updatedata()" [disabled]="!reactiveForm.valid">update </button>
       </div>
     </div>
   </form>
