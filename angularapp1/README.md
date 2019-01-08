@@ -28,3 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## db.json
 it uses a dummy local json server which is used by the service to retrive json data
 use command json-server --watch db.json
+## update 
+this button works when u login->dc->listuers and select row to be updated and this will populate in the form.
