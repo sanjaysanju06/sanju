@@ -1,20 +1,43 @@
+
+<div class="form-group">
+  <input [(ngModel)]="searchText" class="form-control" placeholder="Search"
+          style="width:300px"  >
+</div>
+
 <div class="table-responsive">
-  <table class="table table-bordered" *ngIf="user && user.length">
+  <table class="table table-bordered" *ngIf="user && user.length"  [mfData]="user" #mf="mfDataTable" [mfRowsOnPage]="5" >
     <thead>
       <tr class="bg-primary">
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
+        <th>
+            <mfDefaultSorter by="name"><font color="#fff">Name</font></mfDefaultSorter>
+        </th>
+        <th>
+            <mfDefaultSorter by="email"><font color="#fff">Email</font></mfDefaultSorter>
+        </th>
+        <th>
+            <mfDefaultSorter by="Password"><font color="#fff">Password</font></mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter ><font color="#fff">Other Details</font></mfDefaultSorter>
+        </th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let users of user">
+      <tr *ngFor="let users of mf.data | grdFilter: {name: searchText, email:searchText}; let i=index; ">
         <td>{{ users.name }}</td>
         <td>{{ users.email }}</td>
         <td class="hidetext">{{ users.password }}</td>
+        <td>null</td>
         <td> <button class="btn btn-primary" (click)="editButtonClick(users.id)">Edit</button> </td>
       </tr>
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,20]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot>
   </table>
 </div>
